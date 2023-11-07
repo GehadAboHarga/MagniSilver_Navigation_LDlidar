@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="map_file" default="$(find magni_lidar)/maps/mynewudmap-ils.yaml"/>
+
+  <!-- Run the map server -->
+<!--  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
+  
+
+
+
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="costmap_common_param.yaml" command="load" ns="local_costmap" />
+    <rosparam file="costmap_common_param.yaml" command="load" ns="global_costmap" />
+    <rosparam file="local_costmap_param.yaml" command="load" />
+    <rosparam file="global_costmap_param.yaml" command="load" />
+    <rosparam file="base_local_planner_param.yaml" command="load" />
+    <rosparam file="move_base_params.yaml" command="load" />
+    <rosparam file="global_planner_params.yaml" command="load" />
+    <rosparam file="navfn_global_planner_params.yaml" command="load" />
+  </node>
+
+
+</launch>
